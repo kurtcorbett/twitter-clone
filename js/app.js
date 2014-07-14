@@ -1,6 +1,7 @@
 $(document).ready(function(){
   $('#tweet-controls').hide();
   $('#tweet-submit').attr('disabled',true);
+  $('.tweet ul').hide();
 
   $('.tweet-compose').focus(function(){
     $(this).height(66);
@@ -36,6 +37,7 @@ $(document).ready(function(){
     }
 
   });
+  $('.tweet ul').hide();
 
   var timeStamp = new Date();
 
@@ -61,7 +63,7 @@ $(document).ready(function(){
 
               '<p class="tweet-text">' + tweetText + '</p>'+
 
-              '<div class="tweet-actions">'+
+              '<div class="tweet-actions">'+ 
                 '<ul>'+
                   '<li><span class="icon action-reply"></span> Reply</li>'+
                   '<li><span class="icon action-retweet"></span> Retweet</li>'+
@@ -103,9 +105,20 @@ $(document).ready(function(){
     $('#tweet-submit.button').on('click', function () {
       var tweetText = $('.tweet-compose').val();
       addNewTweet(user,tweetText);
+      // $('.tweet').first().effect("highlight",1000);
+      $('.tweet').first().addClass('animated fadeInRight');
       $('.tweet-compose').val('');
       $('.tweet-compose').blur();
+      $('#tweet-controls').hide();
+      $('#char-count').text(140); 
     }); 
+
+    $('.tweet').hover(function() {
+    	$('.tweet ul').show();
+    	}, function() {
+
+    	$('.tweet ul').hide();
+    });
 
 
 
