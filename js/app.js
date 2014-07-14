@@ -2,6 +2,7 @@ $(document).ready(function(){
   $('#tweet-controls').hide();
   $('#tweet-submit').attr('disabled',true);
   $('.tweet ul').hide();
+  $('.stats').hide();
 
   $('.tweet-compose').focus(function(){
     $(this).height(66);
@@ -37,7 +38,7 @@ $(document).ready(function(){
     }
 
   });
-  $('.tweet ul').hide();
+
 
   var timeStamp = new Date();
 
@@ -102,6 +103,7 @@ $(document).ready(function(){
 
     )}
 
+
     $('#tweet-submit.button').on('click', function () {
       var tweetText = $('.tweet-compose').val();
       addNewTweet(user,tweetText);
@@ -114,13 +116,16 @@ $(document).ready(function(){
     }); 
 
     $('.tweet').hover(function() {
-    	$('.tweet ul').show();
-    	}, function() {
-
-    	$('.tweet ul').hide();
+    	$(this).find('ul').show();
+    	}, function() {    	
+    	$(this).find('ul').hide();
     });
 
 
+
+    	// $(this).find('.stats').show();
+
+    	// $(this).find('.stats').hide();	
 
 
 });
